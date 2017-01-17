@@ -6,10 +6,17 @@ import axios from 'axios';
 
 import NavBar from '../NavBar';
 import NewsItemList from '../NewsItemList';
+import Search from '../Search';
 
 // import logo from './logo.svg';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+const muiTheme = getMuiTheme({
+  palette: {
+    accent1Color: brown50
+  }
+});
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +38,6 @@ class App extends Component {
 
     axios.get(url)
       .then(results => {
-        console.log(results);
         this.setState({
           news: results.data.hits
         });
@@ -41,21 +47,37 @@ class App extends Component {
       });
   }
 
-  render() {
-    const muiTheme = getMuiTheme({
-      palette: {
-        accent1Color: brown50
-      }
-    });
+  saveUserNewsItem(item) {
+    axios.post('/api/user-articles', {
+      url: 'http://mks.io/learn',
+      title: 'Recursive Stuff',
+      author: 'Somebody',
+      date: '2017-01-17T18:16:20.674Z'
+      // created_at gets added automatically with new Date() value
+    })
+      .then(res => {
 
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-        <NavBar />
+          <NavBar />
           <div className="container">
             <div className="row">
-              <div className="col-md-offset-3 col-md-6">
-                <NewsItemList news={this.state.news} />
+              <div className="col-md-offset-2 col-md-8 main-content">
+                <div className="text-center search-box">
+                  <Search getNews={this.getNews.bind(this)} />
+                </div>
+                <NewsItemList
+                  news={this.state.news}
+                  saveUserNewsItem={this.saveUserNewsItem.bind(this)}
+                />
               </div>
             </div>
           </div>
@@ -66,15 +88,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// render() {
-//   return (
-//     <div className="App">
-//       <div className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <h2>Welcome to React</h2>
-//       </div>
-//     </div>
-//   );
-// }

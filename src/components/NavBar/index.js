@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import { Link } from 'react-router';
+
+import './style.css';
+import logo from './code.png';
 
 class NavBar extends Component {
   constructor(props) {
@@ -19,7 +23,12 @@ class NavBar extends Component {
   render() {
     return (
       <AppBar
-        title="My Hacker News"
+        title={
+          <Link to="/">
+            <img className="logo" src={logo} alt=""></img>
+            <span className="title">My Hacker News</span>
+          </Link>
+        }
         onLeftIconButtonTouchTap={this.handleToggle}
       >
         <Drawer

@@ -1,0 +1,15 @@
+a {
+  text-decoration: none !important;
+}
+
+.save-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 30px !important;
+}
+
+.save-btn > div {
+  width: 88px !important;
+}
