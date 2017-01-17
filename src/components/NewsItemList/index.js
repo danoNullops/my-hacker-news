@@ -7,7 +7,9 @@ import NewsItem from '../NewsItem';
 
 import './style.css';
 
-const NewsItemList = ({ news, saveUserNewsItem }) => {
+const NewsItemList = ({ title, news, saveUserNewsItem }) => {
+  saveUserNewsItem = saveUserNewsItem || null;
+
   const divider = i => {
     if (i < (news.length - 1)) {
       return <Divider inset={true} />
@@ -27,7 +29,7 @@ const NewsItemList = ({ news, saveUserNewsItem }) => {
 
   return (
     <List className="NewsItemList">
-      <Subheader>Today's News</Subheader>
+      <Subheader>{title}</Subheader>
       {newsItems}
     </List>
   );

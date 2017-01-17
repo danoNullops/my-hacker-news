@@ -37,8 +37,12 @@ class NavBar extends Component {
           label="Drawer Menu"
           onRequestChange={open => this.setState({ open })}
         >
-          <MenuItem onTouchTap={this.handleClose}>Home</MenuItem>
-          <MenuItem onTouchTap={this.handleClose}>My Saved Articles</MenuItem>
+          <MenuItem onTouchTap={this.handleClose}>
+            <Link to="/">Home</Link>
+          </MenuItem>
+          <MenuItem onTouchTap={this.handleClose}>
+            <Link to="/saved">My Saved Articles</Link>
+          </MenuItem>
         </Drawer>
       </AppBar>
     );

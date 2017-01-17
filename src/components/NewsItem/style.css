@@ -13,3 +13,9 @@ a {
 .save-btn > div {
   width: 88px !important;
 }
+
+.date {
+  font-size: 12px;
+  font-style: italic;
+  margin-left: 10px;
+}
