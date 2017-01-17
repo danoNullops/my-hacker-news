@@ -1,8 +1,11 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const morgan = require('morgan');
 const path = require('path');
 
 const app = express();
+
+mongoose.connect('mongodb://localhost/hacker-news');
 
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 
