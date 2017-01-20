@@ -2,8 +2,6 @@
 
 This is a simple application that gets news from the Hacker News API at https://hn.algolia.com/api, offers the ability to search for articles, and the ability to save them to a database. It was created for a two day solo project at Hack Reactor. It does not currently have authentication, so it does not have much practical use at the moment, but authentication will be added in the future.
 
-Current technology stack:
-React, Express, Mongo, Mongoose, Axios, Material-UI, Bootstrap
 
 ## Getting Started
 
@@ -48,6 +46,7 @@ $ npm install
 Run these each time you want to start the server:
 
 ```
+$ mongod --fork --logpath /var/log/mongodb.log
 $ npm run build
 $ nodemon server
 ```
